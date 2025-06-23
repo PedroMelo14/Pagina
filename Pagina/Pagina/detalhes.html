@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Detalhes do Projeto</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="css/index.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <style>
+    
+    .container {
+      display: flex;
+    }
+
+    .main-content {
+      padding: 2rem;
+      width: 100%;
+    }
+
+    .container-detalhes {
+      max-width: 800px;
+      margin: auto;
+      background-color: #fff;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .info-projeto p {
+      font-size: 1.1rem;
+      margin: 10px 0;
+    }
+
+    .progress-bar {
+      background-color: #e9ecef;
+      border-radius: 6px;
+      overflow: hidden;
+      height: 25px;
+      margin: 10px 0;
+    }
+
+    .progress {
+      background-color: #198754; /* Bootstrap green */
+      height: 100%;
+      transition: width 0.5s;
+      text-align: center;
+      color: white;
+      font-weight: bold;
+      line-height: 25px;
+    }
+
+    button {
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body onload="carregarDetalhes()">
+
+  <div class="container">
+    <aside class="sidebar">
+      <div>
+    <img src="Imagens/Logo.png" alt="Logo Freelacrew" width="150" />
+      
+      <nav>
+        <ul>
+          <li><a href="index.html">Página Principal</a></li>
+          <li><a href="pesquisa.html">Pesquisar</a></li>
+          <li><a href="projetos.html">Projetos</a></li>
+          <li><a href="#">Recomendado</a></li>
+          <li><a href="#">Squads</a></li>
+          <li><a href="#">Community</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <div class="container-detalhes">
+        <h1 id="nome-projeto"></h1>
+
+        <div class="info-projeto">
+          <p><strong>Responsável:</strong> <span id="responsavel"></span></p>
+          <p><strong>Resumo:</strong> <span id="resumo"></span></p>
+
+          <p><strong>Andamento:</strong></p>
+          <div class="progress-bar">
+            <div class="progress" id="barra-andamento"></div>
+          </div>
+          <p id="porcentagem"></p>
+        </div>
+
+        <a href="projetos.html"><button class="btn btn-secondary">Voltar</button></a>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    function carregarDetalhes() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const projeto = urlParams.get('projeto');
+
+      const dadosProjetos = {
+        python: {
+          nome: 'Desenvolvimento em Python',
+          responsavel: 'João Silva',
+          resumo: 'API robusta utilizando Django, Flask e FastAPI.',
+          andamento: 75
+        },
+        fullstack: {
+          nome: 'Projeto Fullstack',
+          responsavel: 'Maria Oliveira',
+          resumo: 'Aplicação web com Node.js no backend e React no frontend.',
+          andamento: 60
+        },
+        frontend: {
+          nome: 'Projeto Front-End',
+          responsavel: 'Carlos Souza',
+          resumo: 'Interface moderna usando React, Angular e CSS.',
+          andamento: 85
+        },
+        flutter: {
+          nome: 'App Flutter',
+          responsavel: 'Ana Costa',
+          resumo: 'Aplicativo mobile para Android e iOS feito em Flutter.',
+          andamento: 50
+        }
+      };
+
+      const dados = dadosProjetos[projeto];
+
+      if (dados) {
+        document.getElementById('nome-projeto').innerText = dados.nome;
+        document.getElementById('responsavel').innerText = dados.responsavel;
+        document.getElementById('resumo').innerText = dados.resumo;
+        document.getElementById('barra-andamento').style.width = dados.andamento + '%';
+        document.getElementById('barra-andamento').innerText = dados.andamento + '%';
+        document.getElementById('porcentagem').innerText = dados.andamento + '% concluído';
+      } else {
+        document.querySelector('.container-detalhes').innerHTML =
+          '<h2>Projeto não encontrado.</h2><a href="projetos.html"><button class="btn btn-secondary">Voltar</button></a>';
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #ffffff;
+}
+
+.container{
+    background-color: whitesmoke;
+    display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid white;
+  border-radius: 16px;
+  width: 600px;
+  height: 700px;
+}
+.formulario{
+    display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 16px;
+}
+body{
+    background-color: rgb(51, 50, 50);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh; 
+  padding: 20px;
+  background-color: #f8f9fa; 
+}
